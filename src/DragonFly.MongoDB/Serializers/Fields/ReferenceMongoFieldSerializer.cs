@@ -32,19 +32,17 @@ public class ReferenceMongoFieldSerializer : MongoFieldSerializer<ReferenceField
 
     public override BsonValue Write(ReferenceField contentField)
     {
-        if (contentField.ContentItem != null)
-        {
-            BsonDocument doc = new BsonDocument()
-            {
-                { ReferenceField.IdField, new BsonBinaryData(contentField.ContentItem.Id, GuidRepresentation.CSharpLegacy) },
-                { ReferenceField.SchemaField, contentField.ContentItem.Schema.Name }
-            };
-
-            return doc;
-        }
-        else
+        if (contentField.ContentItem == null)
         {
             return BsonNull.Value;
         }
+
+        BsonDocument doc = new BsonDocument()
+        {
+            { ReferenceField.IdField, new BsonBinaryData(contentField.ContentItem.Id, GuidRepresentation.CSharpLegacy) },
+            { ReferenceField.SchemaField, contentField.ContentItem.Schema.Name }
+        };
+
+        return doc;
     }
 }

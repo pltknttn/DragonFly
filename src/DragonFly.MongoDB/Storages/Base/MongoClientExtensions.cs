@@ -45,7 +45,6 @@ public static class MongoClientExtensions
 
     public static async Task AddIndexAsync<T>(this IMongoCollection<T> collection, string fieldSelector)
     {
-
         try
         {
             await collection.Indexes.CreateOneAsync(new CreateIndexModel<T>(Builders<T>.IndexKeys.Ascending(fieldSelector), new CreateIndexOptions() { Name = $"{fieldSelector}.asc" })).ConfigureAwait(false);

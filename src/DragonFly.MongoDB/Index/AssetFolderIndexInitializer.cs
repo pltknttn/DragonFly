@@ -28,9 +28,9 @@ class AssetFolderIndexInitializer : IPostInitialize
         IMongoCollection<MongoAssetFolder> assetFolders = Client.Database.GetAssetFolderCollection();
 
         //AssetFolders
-        await assetFolders.AddIndexAsync($"{nameof(MongoAssetFolder.Name)}");
-        await assetFolders.AddIndexAsync($"{nameof(MongoAssetFolder.Parent)}");
-        await assetFolders.AddIndexAsync($"{nameof(MongoAssetFolder.CreatedAt)}");
-        await assetFolders.AddIndexAsync($"{nameof(MongoAssetFolder.ModifiedAt)}");
+        await assetFolders.AddIndexAsync($"{nameof(MongoAssetFolder.Name)}").ConfigureAwait(false);
+        await assetFolders.AddIndexAsync($"{nameof(MongoAssetFolder.Parent)}").ConfigureAwait(false);
+        await assetFolders.AddIndexAsync($"{nameof(MongoAssetFolder.CreatedAt)}").ConfigureAwait(false);
+        await assetFolders.AddIndexAsync($"{nameof(MongoAssetFolder.ModifiedAt)}").ConfigureAwait(false);
     }
 }

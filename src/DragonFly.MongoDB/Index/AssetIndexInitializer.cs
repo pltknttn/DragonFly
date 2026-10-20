@@ -27,12 +27,12 @@ class AssetIndexInitializer : IPostInitialize
     {
         IMongoCollection<MongoAsset> assets = Client.Database.GetAssetCollection();
 
-        await assets.AddIndexAsync($"{nameof(MongoAsset.Name)}");
-        await assets.AddIndexAsync($"{nameof(MongoAsset.Slug)}");
-        await assets.AddIndexAsync($"{nameof(MongoAsset.Alt)}");
-        await assets.AddIndexAsync($"{nameof(MongoAsset.MimeType)}");
-        await assets.AddIndexAsync($"{nameof(MongoAsset.Size)}");
-        await assets.AddIndexAsync($"{nameof(MongoAsset.CreatedAt)}");
-        await assets.AddIndexAsync($"{nameof(MongoAsset.ModifiedAt)}");
+        await assets.AddIndexAsync($"{nameof(MongoAsset.Name)}").ConfigureAwait(false);
+        await assets.AddIndexAsync($"{nameof(MongoAsset.Slug)}").ConfigureAwait(false);
+        await assets.AddIndexAsync($"{nameof(MongoAsset.Alt)}").ConfigureAwait(false);
+        await assets.AddIndexAsync($"{nameof(MongoAsset.MimeType)}").ConfigureAwait(false);
+        await assets.AddIndexAsync($"{nameof(MongoAsset.Size)}").ConfigureAwait(false);
+        await assets.AddIndexAsync($"{nameof(MongoAsset.CreatedAt)}").ConfigureAwait(false);
+        await assets.AddIndexAsync($"{nameof(MongoAsset.ModifiedAt)}").ConfigureAwait(false);
     }
 }
